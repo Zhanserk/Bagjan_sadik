@@ -191,7 +191,7 @@ export default function App() {
             <h2 style={{ margin: '16px 0 24px', fontSize: '28px' }}>Бізбен хабарласыңыз</h2>
             <div className="crow"><div className="ic">📍</div><div><b>Мекенжай</b><span>Сарыағаш ауданы, Жартытөбе ауыл округі, Достық елді мекені,Ы.Алтынсарин көшесі № 18</span></div></div>
             <div className="crow"><div className="ic">📞</div><div><b>Телефон</b><br /><a href="tel:+77760467212">+7 (776) 046-72-12</a></div></div>
-            <div className="crow"><div className="ic">✉️</div><div><b>Email</b><br /><a href="mailto:nurbak-2016.16@mail.ru">nurbak-2016.16@mail.ru</a></div></div>
+            <div className="crow"><div className="ic">✉️</div><div><b>Email</b><br /><a href="mailto:bagyzhan_bb_@mail.ru">bagyzhan_bb_@mail.ru</a></div></div>
             <div className="crow"><div className="ic">🕗</div><div><b>Жұмыс уақыты</b><span>Дүйсенбі – Жұма, 08:00 – 18:00</span></div></div>
           </div>
           <div className="map-box">
