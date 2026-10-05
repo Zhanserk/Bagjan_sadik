@@ -5,6 +5,8 @@ import About from './components/About';
 import Groups from './components/Groups';
 import Advantages from './components/Advantages';
 import Schedule from './components/Schedule';
+import Tour from './components/Tour';
+import MobileBar from './components/MobileBar';
 import Gallery from './components/Gallery';
 import Documents from './components/Documents';
 import Contact from './components/Contact';
@@ -36,6 +38,7 @@ export default function App() {
         <Hero />
         <About />
         <Groups />
+        <Tour />
         <Advantages />
         <Schedule />
         <Gallery />
@@ -43,6 +46,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <MobileBar />
     </>
   );
 }

@@ -18,6 +18,7 @@ export const KINDERGARTEN = {
 export const NAV = [
   ['#about', 'Біз туралы'],
   ['#groups', 'Топтар'],
+  ['#tour', 'Тур'],
   ['#day', 'Күн тәртібі'],
   ['#gallery', 'Галерея'],
   ['#docs', 'Құжаттар'],
@@ -110,6 +111,34 @@ export const PHOTO_CATS = [
     ],
   },
 ];
+// Виртуалды тур: аудандар құжаттардағы бөлме өлшемдері бойынша (кіші топ / үлкен топ / медбике).
+export const TOUR = [
+  {
+    key: 'hall', icon: '🧥', title: 'Киім шешетін бөлме', area: '15,3–18 м²', photos: [p('hall-blue'), p('hall-palm'), p('lockers')],
+    text: 'Әр балаға жеке киім шкафы: киім мен аяқ киім өз орнында тұрады. Кең, жарық бөлме, едені жылы.',
+  },
+  {
+    key: 'play', icon: '🧸', title: 'Ойын бөлмесі', area: '34,3–60,8 м²', photos: [p('room-play'), p('room-winnie'), p('room-carpet')],
+    text: 'Кіші топта ойын бөлмесі — 34,3 м², үлкен топта ойын-жатын бөлмесі — 60,8 м². Ойыншықтар мен жиһаз балалардың жасына сай.',
+  },
+  {
+    key: 'sleep', icon: '🛏️', title: 'Ұйықтау бөлмесі', area: 'жеке кереует', photos: [p('bedroom')],
+    text: 'Әр балаға жеке стационарлық кереует, жылы едендер және табиғи жарық. Тыныш демалыс уақыты осында өтеді.',
+  },
+  {
+    key: 'wash', icon: '🚿', title: 'Жуынатын бөлме', area: '16,3–16,8 м²', photos: [p('washroom-1'), p('washroom-2')],
+    text: 'Балаларға лайықталған жуынғыштар мен дәретханалар. Барлық үй-жайлар санитарлық қағидаларға сәйкес ұсталады.',
+  },
+  {
+    key: 'nurse', icon: '🩺', title: 'Медбике бөлмесі', area: '15 м²', photos: [p('nurse-door'), p('nurse-office'), p('nurse-procedure'), p('nurse-bed')],
+    text: 'Лицензияланған медициналық қызмет: жұмыс орны, процедура бұрышы және оқшаулау бөлмесі. Денсаулық күнде тексеріледі.',
+  },
+  {
+    key: 'yard', icon: '🌳', title: 'Аула және веранда', area: 'ашық ауа', photos: [p('yard-swing'), p('yard-patio'), p('terrace-lesson'), p('terrace'), p('facade')],
+    text: 'Ойын алаңы, жабық веранда және ашық ауада сабақ өткізуге арналған орын — серуен кез келген ауа райында.',
+  },
+];
+
 export const ALL_PHOTOS = PHOTO_CATS.flatMap((c) => c.items.map((i) => ({ ...i, cat: c.key })));
 export const HERO_PHOTOS = [
   { src: p('yard-swing'), caption: 'Ойын алаңы' },
