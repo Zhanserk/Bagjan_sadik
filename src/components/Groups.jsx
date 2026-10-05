@@ -1,5 +1,5 @@
 import React from 'react';
-import { DOOR_PHOTOS, GROUPS } from '../data/site';
+import { GROUPS } from '../data/site';
 
 export default function Groups() {
   return (
@@ -20,18 +20,6 @@ export default function Groups() {
               <ul>{g.items.map((it) => <li key={it}>{it}</li>)}</ul>
             </article>
           ))}
-        </div>
-
-        <div className="doors reveal">
-          <h3>Біздің топтар</h3>
-          <div className="doors-row">
-            {DOOR_PHOTOS.map((d) => (
-              <figure key={d.src} className="door">
-                <img src={d.src} alt={d.name} loading="lazy" />
-                <figcaption>{d.name}</figcaption>
-              </figure>
-            ))}
-          </div>
         </div>
       </div>
     </section>

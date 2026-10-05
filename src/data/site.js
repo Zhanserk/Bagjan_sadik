@@ -117,10 +117,6 @@ export const HERO_PHOTOS = [
   { src: p('terrace-lesson'), caption: 'Ашық ауадағы сабақ' },
 ];
 export const ABOUT_PHOTOS = [p('room-carpet'), p('facade'), p('lockers')];
-export const DOOR_PHOTOS = [
-  { src: p('door-balausa'), name: '«Балауса» тобы' },
-  { src: p('door-baldyrgan'), name: '«Балдырған» тобы' },
-];
 
 // ---- Құжаттар ----
 const withUrl = (d) => ({ ...d, url: `/docs/${d.file}` });
