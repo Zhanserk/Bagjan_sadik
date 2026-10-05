@@ -1,42 +1,90 @@
-// Декор: күн, бұлт, шалғын және жұлдызша — «Бағыжан» балабақшасының күн нұрлы бейнесі
+// Декор: «Бағыжан» — бақ (бау-бақша): алма, жапырақ, бұтақ, көбелек, қызыл қоңыз және гүлдер
 
-export function Sun({ className = '' }) {
+export function Apple({ className = '' }) {
   return (
-    <svg className={className} viewBox="0 0 200 200" aria-hidden="true">
-      <g className="sun-rays" stroke="#ffb400" strokeWidth="9" strokeLinecap="round">
-        {Array.from({ length: 14 }, (_, i) => (
-          <line key={i} x1="100" y1="12" x2="100" y2="32" transform={`rotate(${i * (360 / 14)} 100 100)`} />
-        ))}
+    <svg className={className} viewBox="0 0 100 100" aria-hidden="true">
+      <path d="M50 28c-10-8-34-6-34 22 0 22 14 40 26 40 5 0 6-3 8-3s3 3 8 3c12 0 26-18 26-40 0-28-24-30-34-22z" fill="#ff5a5f" />
+      <path d="M50 28c0-10 4-18 12-22" stroke="#7a4a1d" strokeWidth="5" strokeLinecap="round" fill="none" />
+      <path d="M60 14c10-6 22-2 24 8-10 4-22 2-24-8z" fill="#34b36b" />
+      <ellipse cx="33" cy="47" rx="5" ry="10" fill="#fff" fillOpacity=".35" transform="rotate(20 33 47)" />
+      <circle cx="42" cy="62" r="3.5" fill="#5a1d1d" />
+      <circle cx="62" cy="62" r="3.5" fill="#5a1d1d" />
+      <path d="M44 72c4 5 10 5 14 0" stroke="#5a1d1d" strokeWidth="3.5" strokeLinecap="round" fill="none" />
+    </svg>
+  );
+}
+
+export function Leaf({ className = '' }) {
+  return (
+    <svg className={className} viewBox="0 0 100 100" aria-hidden="true">
+      <path d="M8 92C8 42 40 8 94 8c0 54-34 84-86 84z" fill="currentColor" />
+      <path d="M12 88C38 62 60 40 84 18" stroke="#fff" strokeOpacity=".45" strokeWidth="3" strokeLinecap="round" fill="none" />
+    </svg>
+  );
+}
+
+export function Butterfly({ className = '', color = '#ff8fb1' }) {
+  return (
+    <svg className={className} viewBox="0 0 80 60" aria-hidden="true">
+      <g className="bwing">
+        <path d="M40 30C28 2 2 6 6 26c3 14 22 16 34 4z" fill={color} />
+        <path d="M40 32C30 44 14 56 24 52c10-4 16-10 16-20z" fill="#ffc425" />
       </g>
-      <circle cx="100" cy="100" r="54" fill="#ffc425" />
-      <circle cx="100" cy="100" r="54" fill="url(#sun-g)" />
-      <defs>
-        <radialGradient id="sun-g" cx="35%" cy="30%" r="80%">
-          <stop offset="0" stopColor="#fff4b0" />
-          <stop offset="1" stopColor="#ff9d00" stopOpacity=".55" />
-        </radialGradient>
-      </defs>
-      <circle cx="82" cy="94" r="5" fill="#7a3b00" />
-      <circle cx="118" cy="94" r="5" fill="#7a3b00" />
-      <path d="M80 114c8 12 32 12 40 0" stroke="#7a3b00" strokeWidth="5" strokeLinecap="round" fill="none" />
-      <circle cx="70" cy="112" r="7" fill="#ff7a3d" opacity=".5" />
-      <circle cx="130" cy="112" r="7" fill="#ff7a3d" opacity=".5" />
+      <g className="bwing bwing-r">
+        <path d="M40 30C52 2 78 6 74 26c-3 14-22 16-34 4z" fill={color} />
+        <path d="M40 32C50 44 66 56 56 52c-10-4-16-10-16-20z" fill="#ffc425" />
+      </g>
+      <rect x="38" y="16" width="4" height="28" rx="2" fill="#5a3a1d" />
     </svg>
   );
 }
 
-export function Cloud({ className = '' }) {
+export function Ladybug({ className = '' }) {
   return (
-    <svg className={className} viewBox="0 0 200 100" aria-hidden="true">
-      <path d="M40 90a28 28 0 0 1 2-56 38 38 0 0 1 72-8 32 32 0 0 1 48 28 24 24 0 0 1-4 36z" fill="#fff" />
+    <svg className={className} viewBox="0 0 60 50" aria-hidden="true">
+      <circle cx="46" cy="25" r="9" fill="#2a2540" />
+      <ellipse cx="26" cy="25" rx="22" ry="19" fill="#ff5a5f" />
+      <path d="M26 6v38" stroke="#2a2540" strokeWidth="3" />
+      <circle cx="18" cy="18" r="4" fill="#2a2540" />
+      <circle cx="18" cy="33" r="4" fill="#2a2540" />
+      <circle cx="33" cy="16" r="3.5" fill="#2a2540" />
+      <circle cx="33" cy="35" r="3.5" fill="#2a2540" />
+      <path d="M52 15l6-6M52 35l6 6" stroke="#2a2540" strokeWidth="2.5" strokeLinecap="round" />
     </svg>
   );
 }
 
-export function Star({ className = '', style }) {
+export function Flower({ className = '', style }) {
   return (
-    <svg className={className} style={style} viewBox="0 0 40 40" aria-hidden="true">
-      <path d="M20 2l5.2 11.2 12.3 1.4-9.1 8.4 2.5 12.1L20 28.8 9.1 35.1l2.5-12.1-9.1-8.4 12.3-1.4z" fill="currentColor" />
+    <svg className={className} style={style} viewBox="0 0 40 70" aria-hidden="true">
+      <path d="M20 34v36" stroke="#2f9a5b" strokeWidth="3.5" strokeLinecap="round" />
+      <path d="M20 56c-8-2-12-8-12-12 8 0 12 5 12 12z" fill="#34b36b" />
+      {Array.from({ length: 5 }, (_, i) => (
+        <ellipse key={i} cx="20" cy="12" rx="6" ry="10" fill="currentColor" transform={`rotate(${i * 72} 20 24)`} />
+      ))}
+      <circle cx="20" cy="24" r="6" fill="#ffc425" />
+    </svg>
+  );
+}
+
+// Алма ағашының бұтағы: бұтаққа суретті рамкалар аспа арқанмен ілінеді
+export function Branch({ className = '' }) {
+  const leaves = [[470, 24, -20], [400, 42, 30], [330, 62, -10], [260, 56, 35], [190, 70, -25], [120, 92, 20], [60, 104, -30], [500, 14, 40]];
+  const apples = [[430, 62], [290, 78], [150, 96]];
+  return (
+    <svg className={className} viewBox="0 0 560 140" aria-hidden="true">
+      <path d="M560 12C470 20 420 50 330 56S150 52 60 100" stroke="#8a5a2b" strokeWidth="16" strokeLinecap="round" fill="none" />
+      <path d="M330 56c-10 20-30 34-58 40" stroke="#8a5a2b" strokeWidth="8" strokeLinecap="round" fill="none" />
+      {leaves.map(([x, y, r], i) => (
+        <ellipse key={i} cx={x} cy={y} rx="22" ry="10" fill={i % 2 ? '#34b36b' : '#52c77f'} transform={`rotate(${r} ${x} ${y})`} />
+      ))}
+      {apples.map(([x, y]) => (
+        <g key={x}>
+          <path d={`M${x} ${y - 10}v-8`} stroke="#7a4a1d" strokeWidth="3" strokeLinecap="round" />
+          <circle cx={x} cy={y} r="13" fill="#ff5a5f" />
+          <circle cx={x - 4} cy={y - 4} r="3.5" fill="#fff" fillOpacity=".5" />
+        </g>
+      ))}
     </svg>
   );
 }

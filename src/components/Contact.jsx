@@ -1,6 +1,6 @@
 import React from 'react';
 import { KINDERGARTEN as K } from '../data/site';
-import { Sun } from './Decor';
+import { Leaf } from './Decor';
 
 export default function Contact() {
   const tel = `tel:${K.phone.replace(/[^\d+]/g, '')}`;
@@ -8,7 +8,7 @@ export default function Contact() {
     <section className="contact" id="contact">
       <div className="wrap">
         <div className="contact-card reveal">
-          <Sun className="contact-sun" />
+          <Leaf className="contact-leaf" />
           <div className="contact-copy">
             <p className="kicker">Байланыс</p>
             <h2>Балаңызды бүгін «{K.short}» балабақшасымен таныстырыңыз</h2>

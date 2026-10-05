@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { KINDERGARTEN, NAV } from '../data/site';
-import { Sun } from './Decor';
+import { Apple } from './Decor';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -19,7 +19,7 @@ export default function Header() {
     <header className={`bar ${scrolled ? 'is-scrolled' : ''} ${open ? 'is-open' : ''}`}>
       <div className="wrap bar-in">
         <a href="#top" className="brand" onClick={close}>
-          <Sun className="brand-sun" />
+          <Apple className="brand-apple" />
           <b>{KINDERGARTEN.short}</b>
         </a>
 
