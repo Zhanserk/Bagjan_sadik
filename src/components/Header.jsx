@@ -1,27 +1,39 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { KINDERGARTEN, NAV } from '../data/site';
+import { Sun } from './Decor';
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const close = () => setOpen(false);
 
   return (
-    <header>
-      <div className="wrap nav">
-        <div className="logo">
-          <div className="logo-mark">Б</div>
-          Бағыжан
-        </div>
-        <nav className={`links ${isOpen ? 'open' : ''}`} id="navLinks">
-          <a href="#about" onClick={() => setIsOpen(false)}>Біз туралы</a>
-          <a href="#groups" onClick={() => setIsOpen(false)}>Топтар</a>
-          <a href="#day" onClick={() => setIsOpen(false)}>Күн тәртібі</a>
-          <a href="#gallery" onClick={() => setIsOpen(false)}>Галерея</a>
-          <a href="#trust" onClick={() => setIsOpen(false)}>Құжаттар</a>
-          <a href="#contact" onClick={() => setIsOpen(false)}>Байланыс</a>
+    <header className={`bar ${scrolled ? 'is-scrolled' : ''} ${open ? 'is-open' : ''}`}>
+      <div className="wrap bar-in">
+        <a href="#top" className="brand" onClick={close}>
+          <Sun className="brand-sun" />
+          <b>{KINDERGARTEN.short}</b>
+        </a>
+
+        <nav className="bar-nav" aria-label="Негізгі мәзір">
+          {NAV.map(([href, label]) => (
+            <a key={href} href={href} onClick={close}>{label}</a>
+          ))}
         </nav>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-          <a href="#contact" className="btn btn-primary">Өтінім қалдыру</a>
-          <button className="menu-toggle" id="menuBtn" onClick={() => setIsOpen(!isOpen)}>☰</button>
-        </div>
+
+        <a href="#contact" className="btn btn-orange btn-sm bar-cta">Өтінім қалдыру</a>
+
+        <button className="burger" aria-label="Мәзірді ашу" aria-expanded={open} onClick={() => setOpen((v) => !v)}>
+          <span /><span /><span />
+        </button>
       </div>
     </header>
   );

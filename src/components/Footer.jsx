@@ -1,12 +1,20 @@
 import React from 'react';
+import { KINDERGARTEN as K, NAV } from '../data/site';
+import { Sun } from './Decor';
 
 export default function Footer() {
   return (
-    <footer style={{ background: 'var(--ink)', color: 'rgba(255,255,255,0.7)', padding: '40px 0' }}>
-      <div className="wrap foot-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px', fontSize: '13.5px', fontWeight: 700 }}>
-        <div className="logo" style={{ color: '#fff', fontFamily: "'Baloo 2'", fontWeight: 800, fontSize: '22px' }}>Бағыжан</div>
-        <div>© {new Date().getFullYear()} «Бағыжан» бөбекжай балабақшасы. Барлық құқықтар қорғалған.</div>
+    <footer className="footer">
+      <div className="wrap foot-in">
+        <div>
+          <div className="foot-logo"><Sun className="brand-sun" /> <b>{K.short}</b></div>
+          <p>{K.legal}. Балаңыздың жарқын болашағы, сапалы тәрбиесі мен қауіпсіз дамуы үшін.</p>
+        </div>
+        <nav className="foot-nav" aria-label="Төменгі мәзір">
+          {NAV.map(([href, label]) => <a key={href} href={href}>{label}</a>)}
+        </nav>
       </div>
+      <p className="wrap foot-copy">© {new Date().getFullYear()} {K.legal}. Барлық құқықтар қорғалған.</p>
     </footer>
   );
 }
