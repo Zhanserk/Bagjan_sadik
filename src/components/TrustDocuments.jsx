@@ -1,4 +1,5 @@
 import React from 'react';
+import Documents from './Documents';
 
 /* ---------- Ресми құжаттар (лицензия, санитарлық қорытынды және т.б.) ---------- */
 const officialDocs = [
@@ -49,6 +50,7 @@ export default function TrustDocuments() {
             </div>
           ))}
         </div>
+        <Documents />
       </div>
     </section>
   );
