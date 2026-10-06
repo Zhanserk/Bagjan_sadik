@@ -42,8 +42,8 @@ section { position: relative; }
 .bar.is-scrolled, .bar.is-open { background: rgba(255, 250, 240, .96); backdrop-filter: blur(10px); box-shadow: 0 8px 26px -18px rgba(42, 37, 64, .6); }
 .bar-in { display: flex; align-items: center; gap: 24px; height: 74px; }
 .brand { display: flex; align-items: center; gap: 8px; margin-right: auto; }
-.brand-apple { width: 42px; transition: transform .3s; }
-.brand:hover .brand-apple { transform: rotate(-12deg) scale(1.1); }
+.brand-mark { width: 42px; transition: transform .3s; }
+.brand:hover .brand-mark { transform: rotate(-12deg) scale(1.1); }
 .brand b { font-family: var(--display); font-size: 1.6rem; font-weight: 800; color: var(--ink); }
 .bar-nav { display: flex; gap: 22px; }
 .bar-nav a { font-weight: 800; font-size: .92rem; color: var(--ink); position: relative; }
@@ -55,94 +55,90 @@ section { position: relative; }
 .is-open .burger span:nth-child(2) { opacity: 0; }
 .is-open .burger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-/* ============ Hero (бақ) ============ */
-.hero { padding: 130px 0 150px; overflow: hidden; background: radial-gradient(circle at 85% 8%, rgba(255, 244, 160, .8), transparent 38%), linear-gradient(180deg, #c9f0b8 0%, #e6f8d4 45%, #fff6d1 100%); }
-.lf { position: absolute; color: #6fd08c; opacity: .45; pointer-events: none; }
-.lf-a { width: 170px; left: -40px; top: 22%; transform: rotate(-30deg); }
-.lf-b { width: 120px; left: 46%; top: 9%; transform: rotate(70deg); opacity: .3; }
-.hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.02fr .98fr; gap: 40px; align-items: center; }
+/* ============ Hero (батыр мен тұлпар) ============ */
+@keyframes drift { from { transform: translateX(-14vw); } to { transform: translateX(114vw); } }
+@keyframes beam { to { opacity: .35; } }
+@keyframes speck { 0%, 100% { opacity: 0; transform: translate(0, 0); } 30% { opacity: 1; } 60% { opacity: .8; transform: translate(18px, -22px); } }
+@keyframes soar { from { transform: translate(-16vw, 0); } 50% { transform: translate(50vw, -26px); } to { transform: translate(116vw, 0); } }
+@keyframes eflap { to { transform: scaleY(.45); } }
+@keyframes ride { from { transform: translateX(-340px); } to { transform: translateX(calc(100vw + 40px)); } }
+@keyframes gallop { 0%, 100% { transform: translateY(0) rotate(-1.2deg); } 50% { transform: translateY(-9px) rotate(1.4deg); } }
+@keyframes legF { from { transform: rotate(-38deg); } to { transform: rotate(26deg); } }
+@keyframes legB { from { transform: rotate(30deg); } to { transform: rotate(-32deg); } }
+@keyframes puff { 0% { opacity: .75; transform: translate(0, 0) scale(.4); } 100% { opacity: 0; transform: translate(-96px, -18px) scale(1.7); } }
+@keyframes wave { 0%, 100% { transform: skewY(-6deg) scaleX(1); } 50% { transform: skewY(6deg) scaleX(.9); } }
+@keyframes mane { 50% { transform: rotate(-4deg); } }
+
+.hero { padding: 130px 0 290px; overflow: hidden; background: radial-gradient(circle at 82% 10%, rgba(255, 243, 170, .95), transparent 36%), linear-gradient(180deg, #7fcdf5 0%, #b8e5fb 40%, #e4f6ff 68%, #fff2c4 100%); }
+.beams { position: absolute; right: -5%; top: -10%; width: 72%; height: 112%; pointer-events: none; opacity: .8; animation: beam 9s ease-in-out infinite alternate;
+  background: conic-gradient(from 188deg at 100% 0%, transparent 0 4%, rgba(255, 255, 255, .4) 5% 7%, transparent 8% 12%, rgba(255, 255, 255, .3) 13% 15%, transparent 16% 21%, rgba(255, 255, 255, .36) 22% 24%, transparent 25% 100%);
+  -webkit-mask-image: linear-gradient(200deg, #000, transparent 70%); mask-image: linear-gradient(200deg, #000, transparent 70%); }
+.sun { position: absolute; right: 4%; top: 78px; width: 250px; z-index: 0; pointer-events: none; translate: calc(var(--mx, 0) * -14px) calc(var(--my, 0) * -8px); }
+.sun-rays { transform-origin: 100px 100px; animation: spin 80s linear infinite; }
+.cloud { position: absolute; z-index: 1; opacity: .92; animation: drift 90s linear infinite; pointer-events: none; }
+.cloud-a { width: 150px; top: 11%; left: 0; }
+.cloud-b { width: 110px; top: 30%; left: 0; animation-duration: 120s; animation-delay: -50s; opacity: .75; }
+.eagle { position: absolute; left: 0; z-index: 1; pointer-events: none; animation: soar 46s linear infinite; }
+.eagle .ewing { transform-box: fill-box; transform-origin: 50% 80%; animation: eflap 1.1s ease-in-out infinite alternate; }
+.eagle-a { top: 13%; width: 92px; }
+.eagle-b { top: 24%; width: 56px; animation-duration: 62s; animation-delay: -22s; }
+.eagle-c { top: 8%; width: 42px; animation-duration: 74s; animation-delay: -40s; }
+.mtn { position: absolute; left: -12px; bottom: 96px; width: calc(100% + 24px); height: 230px; z-index: 1; pointer-events: none; translate: calc(var(--mx, 0) * -8px) 0; }
+.specks i { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: #fff6a8; box-shadow: 0 0 10px 3px rgba(255, 240, 150, .8); opacity: 0; animation: speck 8s ease-in-out infinite; }
+
+.hero-grid { position: relative; z-index: 4; display: grid; grid-template-columns: 1.02fr .98fr; gap: 40px; align-items: center; }
 .badge { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 18px; padding: 8px 18px 8px 10px; border-radius: 999px; background: #fff; box-shadow: 0 10px 20px -14px rgba(42, 37, 64, .6); font-weight: 800; font-size: .88rem; }
-.badge-apple { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #ffe3e3; }
-.hero h1 { color: #20402c; }
+.badge-mark { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #fff1c2; }
+.hero h1 { color: #0f2f55; }
 .hero h1 em { position: relative; color: var(--coral); }
-.hero h1 em::after { content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 10px; background: radial-gradient(circle at 5px 5px, #34b36b 4px, transparent 5px) repeat-x; background-size: 14px 10px; }
-.lead { font-size: 1.14rem; color: #3d5a45; max-width: 540px; margin: 24px 0 32px; }
+.hero h1 em::after { content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 10px; background: radial-gradient(circle at 5px 5px, #ffc425 4px, transparent 5px) repeat-x; background-size: 14px 10px; }
+.lead { font-size: 1.14rem; color: #27486f; max-width: 540px; margin: 24px 0 32px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
 
-.apples { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 44px; }
-.apple-stat { --a1: #ff7a7f; --a2: #e0383f; display: flex; flex-direction: column; align-items: center; width: 118px; text-align: center; }
-.apple-stat.green { --a1: #7fdc9a; --a2: #2f9a5b; }
-.apple-stat.gold { --a1: #ffd95a; --a2: #f2a100; }
-.apple-body { position: relative; display: grid; place-items: center; width: 98px; height: 92px; border-radius: 50% 50% 46% 46% / 55% 55% 45% 45%; background: radial-gradient(circle at 32% 28%, var(--a1), var(--a2)); box-shadow: 0 18px 24px -14px var(--a2); transition: transform .3s; }
-.apple-stat:hover .apple-body { transform: translateY(-6px) rotate(-4deg); }
-.apple-body::before { content: ''; position: absolute; left: 50%; top: -12px; width: 5px; height: 16px; border-radius: 4px; background: #7a4a1d; transform: translateX(-50%) rotate(8deg); }
-.apple-body::after { content: ''; position: absolute; left: 54%; top: -10px; width: 26px; height: 14px; border-radius: 0 100% 0 100%; background: #34b36b; transform: rotate(-12deg); }
-.apple-body b { font-family: var(--display); font-size: 1.7rem; font-weight: 800; color: #fff; text-shadow: 0 2px 0 rgba(0, 0, 0, .18); }
-.apple-stat small { margin-top: 10px; font-weight: 800; font-size: .8rem; line-height: 1.25; color: #3d5a45; }
+.medals { display: flex; flex-wrap: wrap; gap: 24px; margin: 46px 0 0; padding: 0 0 0 8px; list-style: none; }
+.medal-stat { --m1: #5ccbff; --m2: #1c88c7; display: flex; flex-direction: column; align-items: center; width: 118px; text-align: center; }
+.medal-stat.red { --m1: #ff7a7f; --m2: #d93c3c; }
+.medal-stat.gold { --m1: #ffd95a; --m2: #f2a100; }
+.medal { position: relative; display: grid; place-items: center; width: 92px; height: 92px; border-radius: 50%; background: radial-gradient(circle at 32% 28%, var(--m1), var(--m2)); box-shadow: 0 0 0 4px #fff3c9, 0 0 0 7px #ffc425, 0 18px 24px -12px var(--m2); transition: transform .3s; }
+.medal::before { content: ''; position: absolute; inset: 7px; border-radius: 50%; border: 2.5px dashed rgba(255, 255, 255, .8); }
+.medal-stat:hover .medal { transform: translateY(-6px) rotate(8deg); }
+.medal b { font-family: var(--display); font-size: 1.7rem; font-weight: 800; color: #fff; text-shadow: 0 2px 0 rgba(0, 0, 0, .18); }
+.medal-stat small { margin-top: 18px; font-weight: 800; font-size: .8rem; line-height: 1.25; color: #27486f; }
 
 .hero-photos { position: relative; height: 590px; }
-.branch { position: absolute; right: -20px; top: -20px; width: 112%; max-width: 640px; }
-.frame { --rope: 60px; position: absolute; margin: 0; padding: 10px 10px 8px; border-radius: 14px; background: linear-gradient(135deg, #d9a066, #b9783a); box-shadow: 0 26px 34px -20px rgba(70, 40, 10, .7); transform-origin: 50% calc(var(--rope) * -1); animation: swing 6s ease-in-out infinite; }
+.beam { position: absolute; left: -3%; top: -43px; width: 106%; overflow: visible; pointer-events: none; }
+.frame { --rope: 60px; position: absolute; margin: 0; padding: 10px 10px 8px; border-radius: 14px; background: linear-gradient(135deg, #2a9ee0, #1a5a9a); box-shadow: inset 0 0 0 3px #ffc425, 0 26px 34px -20px rgba(10, 40, 80, .75); transform-origin: 50% calc(var(--rope) * -1); animation: swing 6s ease-in-out infinite; translate: calc(var(--mx, 0) * 9px) calc(var(--my, 0) * 7px); }
 .frame::before { content: ''; position: absolute; left: 50%; bottom: 100%; width: 3px; height: var(--rope); background: #8a5a2b; transform: translateX(-50%); }
-.frame::after { content: ''; position: absolute; left: 50%; top: -6px; width: 14px; height: 14px; border-radius: 50%; background: #5d3a22; transform: translateX(-50%); }
+.frame::after { content: ''; position: absolute; left: 50%; top: -6px; width: 14px; height: 14px; border-radius: 50%; background: #ffc425; box-shadow: 0 0 0 3px #d93c3c; transform: translateX(-50%); }
 .frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; }
 .frame figcaption { position: absolute; left: 50%; bottom: -16px; padding: 4px 14px; border-radius: 8px; background: #fff3c9; color: #5d3a22; font-family: var(--display); font-weight: 700; font-size: .95rem; white-space: nowrap; transform: translateX(-50%); box-shadow: 0 8px 14px -8px rgba(70, 40, 10, .7); }
 .fr-1 { --rope: 46px; width: 270px; height: 200px; left: 0; top: 100px; }
-.fr-2 { --rope: 62px; width: 240px; height: 190px; right: 0; top: 130px; animation-delay: -2s; }
+.fr-2 { --rope: 62px; width: 240px; height: 190px; right: 0; top: 116px; animation-delay: -2s; }
 .fr-3 { --rope: 300px; width: 160px; height: 200px; left: 38%; top: 356px; animation-delay: -4s; }
-.bfly { position: absolute; width: 56px; animation: flutter 11s ease-in-out infinite; z-index: 4; }
-.bfly .bwing { transform-origin: 40px 30px; animation: bflap .22s ease-in-out infinite alternate; }
-.bfly .bwing-r { animation-direction: alternate-reverse; }
-.bf-a { left: 52%; top: 10%; }
-.bf-b { width: 40px; left: 4%; top: 46%; animation-duration: 14s; animation-delay: -4s; }
-.bf-c { width: 46px; right: 6%; bottom: 8%; animation-duration: 13s; animation-delay: -8s; }
 
 .meadow { position: absolute; left: 0; right: 0; bottom: 56px; height: 90px; z-index: 1; pointer-events: none; }
 .bloom { position: absolute; bottom: 0; transform-origin: 50% 100%; animation: sway 4s ease-in-out infinite; --s: 6deg; }
 .bloom:nth-child(even) { --s: -6deg; }
-.ladybug { position: absolute; bottom: 74px; left: -8%; width: 44px; z-index: 3; animation: crawl 38s linear infinite; }
+.tu { position: absolute; left: 3%; bottom: 96px; width: 84px; z-index: 3; }
+.tu-cloth { transform-box: fill-box; transform-origin: 0 50%; animation: wave 2.4s ease-in-out infinite; }
+.dombyra { position: absolute; left: 33%; bottom: 86px; width: 46px; z-index: 3; rotate: -14deg; }
+
+.rider { position: absolute; left: 0; bottom: 70px; width: 340px; z-index: 3; pointer-events: none; animation: ride 24s linear infinite; }
+.rider-svg { display: block; width: 100%; animation: gallop .5s ease-in-out infinite; }
+.leg { transform-box: fill-box; transform-origin: 50% 0; animation: .5s ease-in-out infinite alternate; }
+.leg-ff, .leg-fb { animation-name: legF; }
+.leg-rb, .leg-rf { animation-name: legB; }
+.leg-ff, .leg-rb { animation-delay: -.22s; }
+.tail, .mane { transform-box: fill-box; transform-origin: 100% 50%; animation: mane .5s ease-in-out infinite; }
+.mane { transform-origin: 0 100%; }
+.rflag { transform-box: fill-box; transform-origin: 100% 50%; animation: wave .45s ease-in-out infinite; }
+.plume { transform-box: fill-box; transform-origin: 100% 100%; animation: mane .5s ease-in-out infinite; }
+.dust { position: absolute; left: 4%; bottom: 6px; width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 244, 214, .9); animation: puff 1s ease-out infinite; }
+.dust-b { left: 0; animation-delay: -.33s; }
+.dust-c { left: 8%; animation-delay: -.66s; }
+
 .hero-hills { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: 130px; color: var(--cream); z-index: 2; pointer-events: none; }
-
-/* ---- Hero: қосымша бөлшектер ---- */
-@keyframes drift { from { transform: translateX(-14vw); } to { transform: translateX(114vw); } }
-@keyframes beam { to { opacity: .35; } }
-@keyframes crown { 50% { transform: rotate(1.6deg) scale(1.01); } }
-@keyframes speck { 0%, 100% { opacity: 0; transform: translate(0, 0); } 30% { opacity: 1; } 60% { opacity: .8; transform: translate(18px, -22px); } }
-@keyframes leaffall { 0% { transform: translate(0, 0) rotate(0); opacity: 0; } 10% { opacity: .8; } 100% { transform: translate(-90px, 100vh) rotate(420deg); opacity: 0; } }
-@keyframes peek { 0%, 55%, 100% { transform: translateY(4px); } 70%, 85% { transform: translateY(-3px); } }
-@keyframes chirp { 0%, 62%, 100% { opacity: 0; transform: translateY(6px) scale(.8); } 70%, 88% { opacity: 1; transform: translateY(0) scale(1); } }
-@keyframes appledrop { 0% { transform: translateY(0); opacity: 0; } 8% { opacity: 1; } 50% { transform: translateY(278px); } 58% { transform: translateY(252px); } 66% { transform: translateY(278px); opacity: 1; } 85% { opacity: 1; } 100% { transform: translateY(278px); opacity: 0; } }
-@keyframes hop { 50% { transform: translateY(-5px); } }
-
-.hero { padding-bottom: 250px; }
-.beams { position: absolute; right: -5%; top: -10%; width: 72%; height: 112%; pointer-events: none; opacity: .8; animation: beam 9s ease-in-out infinite alternate;
-  background: conic-gradient(from 188deg at 100% 0%, transparent 0 4%, rgba(255, 255, 255, .4) 5% 7%, transparent 8% 12%, rgba(255, 255, 255, .3) 13% 15%, transparent 16% 21%, rgba(255, 255, 255, .36) 22% 24%, transparent 25% 100%);
-  -webkit-mask-image: linear-gradient(200deg, #000, transparent 70%); mask-image: linear-gradient(200deg, #000, transparent 70%); }
-.rainbow { position: absolute; right: 3%; top: 12%; width: 460px; height: 230px; overflow: hidden; opacity: .5; pointer-events: none; }
-.rainbow::before { content: ''; display: block; width: 460px; height: 460px; border-radius: 50%; background: radial-gradient(circle, transparent 0 55%, #ff5a5f 56% 60%, #ff9d3d 60% 64%, #ffc425 64% 68%, #34b36b 68% 72%, #35b6f2 72% 76%, #a98bff 76% 80%, transparent 81%); }
-.cloud { position: absolute; z-index: 1; opacity: .92; animation: drift 90s linear infinite; pointer-events: none; }
-.cloud-a { width: 150px; top: 17%; left: 0; }
-.cloud-b { width: 110px; top: 40%; left: 0; animation-duration: 120s; animation-delay: -50s; opacity: .75; }
-.tree { position: absolute; bottom: 120px; z-index: 1; opacity: .5; pointer-events: none; translate: calc(var(--mx, 0) * -9px) calc(var(--my, 0) * -4px); }
-.tree-l { left: -70px; width: 250px; }
-.tree-r { right: -80px; width: 300px; }
-.tree circle { transform-box: fill-box; transform-origin: 50% 100%; animation: crown 7s ease-in-out infinite; }
-.specks i { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: #fff6a8; box-shadow: 0 0 10px 3px rgba(255, 240, 150, .8); opacity: 0; animation: speck 8s ease-in-out infinite; }
-.leaves i { position: absolute; top: -30px; width: 16px; height: 22px; border-radius: 0 100% 0 100%; background: #52c77f; opacity: 0; animation: leaffall 15s linear infinite; z-index: 1; }
-
-.birdhouse { position: absolute; left: 57%; top: 34px; width: 52px; z-index: 4; transform-origin: 50% 0; animation: swing 5s ease-in-out infinite; }
-.chick-head { animation: peek 3s ease-in-out infinite; }
-.chirp { position: absolute; left: calc(57% + 52px); top: 8px; z-index: 5; padding: 4px 10px; border-radius: 12px 12px 12px 2px; background: #fff; box-shadow: 0 8px 14px -8px rgba(42, 37, 64, .5); font-weight: 800; font-size: .8rem; white-space: nowrap; opacity: 0; animation: chirp 6s ease-in-out infinite; }
-.fall-apple { position: absolute; left: 52%; top: 66px; z-index: 2; width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ff9a9d, #e0383f); opacity: 0; animation: appledrop 8s ease-in infinite; }
-.frame { translate: calc(var(--mx, 0) * 9px) calc(var(--my, 0) * 7px); }
-.bfly { translate: calc(var(--mx, 0) * 20px) calc(var(--my, 0) * 14px); }
-
-.sign { position: absolute; left: 2.5%; bottom: 100px; width: 156px; z-index: 3; transform-origin: 50% 100%; animation: sway 6s ease-in-out infinite; --s: 2deg; }
-.basket { position: absolute; left: 33%; bottom: 82px; width: 96px; z-index: 3; }
-.shroom { position: absolute; bottom: 90px; width: 38px; z-index: 3; }
-.shroom-a { left: 54%; }
-.shroom-b { left: 61%; width: 28px; bottom: 86px; }
-.hedgehog { position: absolute; bottom: 68px; left: -14%; width: 112px; z-index: 3; animation: crawl 64s linear infinite -20s, hop .9s ease-in-out infinite; }
+.ornament-strip { position: absolute; left: 0; right: 0; bottom: 0; height: 22px; z-index: 5; box-shadow: 0 -3px 0 #ffc425; background: #1c88c7 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='22' viewBox='0 0 44 22'%3E%3Cpath d='M22 3l9 8-9 8-9-8z' fill='%23ffc425'/%3E%3Cpath d='M22 7l5 4-5 4-5-4z' fill='%23d93c3c'/%3E%3Ccircle cx='3' cy='11' r='3' fill='%23fff3c9'/%3E%3Ccircle cx='41' cy='11' r='3' fill='%23fff3c9'/%3E%3C/svg%3E") repeat-x 0 0 / 44px 22px; }
 
 /* ============ About ============ */
 .about { padding: 70px 0 90px; }
@@ -348,11 +344,12 @@ section { position: relative; }
   .dx-list { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
-  .hero { padding: 112px 0 260px; }
-  .tree, .sign, .rainbow, .basket, .shroom-b { display: none; }
-  .birdhouse { left: 54%; }
-  .chirp { left: calc(54% + 50px); }
-  .hedgehog { width: 84px; }
+  .hero { padding: 112px 0 280px; }
+  .sun { width: 130px; right: -26px; top: 70px; opacity: .85; }
+  .dombyra, .eagle-c { display: none; }
+  .mtn { height: 170px; bottom: 90px; }
+  .rider { width: 220px; bottom: 66px; }
+  .tu { width: 62px; left: 2%; }
   .about-facts, .adv-grid { grid-template-columns: 1fr; }
   .masonry { column-count: 1; }
   .contact-card { padding: 32px 22px; }
@@ -367,8 +364,8 @@ section { position: relative; }
   .fr-1{ width: 210px; height: 158px; top: 90px; }
   .fr-2 { width: 190px; height: 150px; top: 120px; }
   .fr-3 { width: 130px; height: 170px; left: 36%; top: 310px; --rope: 260px; }
-  .apples { gap: 12px; }
-  .apple-stat { width: 98px; }
-  .apple-body { width: 82px; height: 78px; }
-  .apple-body b { font-size: 1.4rem; }
+  .medals { gap: 14px; padding-left: 6px; }
+  .medal-stat { width: 98px; }
+  .medal { width: 78px; height: 78px; }
+  .medal b { font-size: 1.4rem; }
 }

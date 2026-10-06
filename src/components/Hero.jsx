@@ -1,29 +1,28 @@
 import React, { useRef } from 'react';
 import { DOCS_TOTAL, HERO_PHOTOS, KINDERGARTEN as K } from '../data/site';
 import {
-  Basket, Birdhouse, Branch, Butterfly, Cloud, Flower, Hedgehog, Hills, Ladybug, Leaf, Mushroom, Signpost, TreeBg,
+  Cloud, Dombyra, Eagle, Hills, Kovyl, Mountains, OrnamentBeam, Rider, Sun, Tu,
 } from './Decor';
 
-// Цифрлар — «алмалар»: қызыл, жасыл және алтын
+// Цифрлар — «алтын медальдар»: көк, қызыл және алтын жиек
 const STATS = [
-  [K.since, 'жылдан бері жұмыс істейді', 'red'],
-  ['2', 'жеке жабдықталған топ', 'green'],
+  [K.since, 'жылдан бері жұмыс істейді', 'blue'],
+  ['2', 'жеке жабдықталған топ', 'red'],
   [String(DOCS_TOTAL), 'ашық құжат', 'gold'],
 ];
-const COLORS = ['#ff7a9c', '#ffc425', '#ffffff', '#ff9d3d', '#c59bff', '#ff5a5f'];
-const MEADOW = Array.from({ length: 24 }, (_, i) => ({
-  left: `${2 + i * 4.1}%`,
-  size: 20 + ((i * 7) % 5) * 5,
-  color: COLORS[i % COLORS.length],
+const TONES = ['#fff6d6', '#f3e6a8', '#ffffff', '#ffe9b0'];
+const GRASS = Array.from({ length: 26 }, (_, i) => ({
+  left: `${1 + i * 3.9}%`,
+  size: 22 + ((i * 7) % 5) * 5,
+  color: TONES[i % TONES.length],
   delay: (i % 6) * 0.35,
 }));
 const SPECKS = Array.from({ length: 14 }, (_, i) => ({ left: `${(i * 71) % 94 + 3}%`, top: `${(i * 37) % 60 + 8}%`, delay: (i % 7) * 1.1 }));
-const LEAVES = Array.from({ length: 9 }, (_, i) => ({ left: `${(i * 59) % 96 + 2}%`, delay: (i % 5) * 2.8, dur: 13 + (i % 4) * 3 }));
 
 export default function Hero() {
   const ref = useRef(null);
 
-  // Тышқан қозғалса, рамкалар мен көбелектер сәл жылжиды (параллакс)
+  // Тышқан қозғалса, күн, таулар мен рамкалар сәл жылжиды (параллакс)
   const onMove = (e) => {
     const el = ref.current;
     if (!el) return;
@@ -39,23 +38,21 @@ export default function Hero() {
   return (
     <section className="hero" id="top" ref={ref} onMouseMove={onMove} onMouseLeave={onLeave}>
       <div className="beams" aria-hidden="true" />
-      <div className="rainbow" aria-hidden="true" />
+      <Sun className="sun" />
       <Cloud className="cloud cloud-a" />
       <Cloud className="cloud cloud-b" />
-      <TreeBg className="tree tree-r" />
-      <Leaf className="lf lf-a" />
-      <Leaf className="lf lf-b" />
+      <Eagle className="eagle eagle-a" />
+      <Eagle className="eagle eagle-b" color="#b8730a" />
+      <Eagle className="eagle eagle-c" />
+      <Mountains className="mtn" />
       <div className="specks" aria-hidden="true">
         {SPECKS.map((s, i) => <i key={i} style={{ left: s.left, top: s.top, animationDelay: `${s.delay}s` }} />)}
-      </div>
-      <div className="leaves" aria-hidden="true">
-        {LEAVES.map((l, i) => <i key={i} style={{ left: l.left, animationDelay: `${l.delay}s`, animationDuration: `${l.dur}s` }} />)}
       </div>
 
       <div className="wrap hero-grid">
         <div className="hero-copy">
-          <p className="badge"><span className="badge-apple">🍎</span> {K.since} жылдан бері сенімді балабақша</p>
-          <h1>Балаңыздың күні <em>күлкіге</em> толы өтетін мекен</h1>
+          <p className="badge"><span className="badge-mark">🐎</span> {K.since} жылдан бері сенімді балабақша</p>
+          <h1>Кішкентай <em>батырлар</em> өсетін мекен</h1>
           <p className="lead">
             «{K.short}» бөбекжай балабақшасы — жарық, жайлы бөлмелер, жеке ойын алаңдары және мейірімді тәрбиешілер.
             Санитарлық нормаларға толық сай, лицензияланған медициналық қызмет.
@@ -64,10 +61,10 @@ export default function Hero() {
             <a href="#contact" className="btn btn-leaf">Экскурсияға жазылу</a>
             <a href="#gallery" className="btn btn-white">Суреттерді көру →</a>
           </div>
-          <ul className="apples">
+          <ul className="medals">
             {STATS.map(([big, label, tone]) => (
-              <li key={label} className={`apple-stat ${tone}`}>
-                <span className="apple-body"><b>{big}</b></span>
+              <li key={label} className={`medal-stat ${tone}`}>
+                <span className="medal"><b>{big}</b></span>
                 <small>{label}</small>
               </li>
             ))}
@@ -75,34 +72,31 @@ export default function Hero() {
         </div>
 
         <div className="hero-photos">
-          <Branch className="branch" />
-          <span className="fall-apple" aria-hidden="true" />
-          <Birdhouse className="birdhouse" />
-          <span className="chirp" aria-hidden="true">Сәлем! 🎵</span>
+          <OrnamentBeam className="beam" />
           {HERO_PHOTOS.map((ph, i) => (
             <figure key={ph.src} className={`frame fr-${i + 1}`}>
               <img src={ph.src} alt={ph.caption} />
               <figcaption>{ph.caption}</figcaption>
             </figure>
           ))}
-          <Butterfly className="bfly bf-a" />
-          <Butterfly className="bfly bf-b" color="#c59bff" />
-          <Butterfly className="bfly bf-c" color="#ffc425" />
         </div>
       </div>
 
       <div className="meadow" aria-hidden="true">
-        {MEADOW.map((f, i) => (
-          <Flower key={i} className="bloom" style={{ left: f.left, width: f.size, color: f.color, animationDelay: `${f.delay}s` }} />
+        {GRASS.map((g, i) => (
+          <Kovyl key={i} className="bloom" style={{ left: g.left, width: g.size, color: g.color, animationDelay: `${g.delay}s` }} />
         ))}
       </div>
-      <Signpost className="sign" />
-      <Basket className="basket" />
-      <Mushroom className="shroom shroom-a" />
-      <Mushroom className="shroom shroom-b" />
-      <Hedgehog className="hedgehog" />
-      <Ladybug className="ladybug" />
+      <Tu className="tu" />
+      <Dombyra className="dombyra" />
+      <div className="rider" aria-hidden="true">
+        <i className="dust dust-a" />
+        <i className="dust dust-b" />
+        <i className="dust dust-c" />
+        <Rider className="rider-svg" />
+      </div>
       <Hills className="hero-hills" />
+      <div className="ornament-strip" aria-hidden="true" />
     </section>
   );
 }
